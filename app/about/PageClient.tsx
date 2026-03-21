@@ -73,8 +73,8 @@ export default function AboutPageClient() {
               { year: '2020', event: 'The church continues to meet and grow through the pandemic, discovering that community and the Word are essential anchors in uncertain times.' },
               { year: '2022', event: 'Church groups are established — creating space for deeper fellowship, discipleship, and pastoral care within the congregation.' },
               { year: '2023', event: "The Children's Department is formally launched under Sis. Jane Idike, providing a dedicated space for the church's youngest members." },
-              { year: '2024', event: 'The worship ministry expands under Pastor Bisola Daniel and Bro. Shedrach Idike, developing a richer culture of praise and worship.' },
-              { year: '2025', event: 'Kyrios Family Church acquires land to build a permanent place of worship — a significant milestone in the life of the church.' },
+              { year: '2025', event: 'The worship ministry expands under Pastor Bisola Daniel and Bro. Shedrach Idike, developing a richer culture of praise and worship.' },
+              { year: '2026', event: 'Kyrios Family Church acquires land to build a permanent place of worship — a significant milestone in the life of the church.' },
             ].map((item, i, arr) => (
               <div key={item.year} style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'center', flexShrink: 0 }}>
