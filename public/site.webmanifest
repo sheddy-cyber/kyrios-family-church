@@ -1,0 +1,15 @@
+{
+  "name": "Kyrios Family Church",
+  "short_name": "Kyrios Church",
+  "description": "A Spirit-filled church community in Victoria Island, Lagos. Life in all its fullness.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f6f3",
+  "theme_color": "#141210",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/favicon-16.png", "sizes": "16x16",   "type": "image/png" },
+    { "src": "/favicon-32.png", "sizes": "32x32",   "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "apple touch icon" }
+  ]
+}
