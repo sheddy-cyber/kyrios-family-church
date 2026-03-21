@@ -119,7 +119,7 @@ export default function AboutPageClient() {
         <div className="site-container">
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <span style={{ fontSize: '10px', letterSpacing: '0.4em', textTransform: 'uppercase' as const, color: C.crimsonLight, fontFamily: 'var(--font-body)' }}>Our Ministers</span>
-            <h2 className="font-display" style={{ fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 300, color: '#f8f6f3', marginTop: '10px' }}>The Team</h2>
+            <h2 className="font-display" style={{ fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 300, color: '#f8f6f3', marginTop: '10px' }}>Our Leadership</h2>
           </div>
           <div className="about-team">
             {team.map(m => (
