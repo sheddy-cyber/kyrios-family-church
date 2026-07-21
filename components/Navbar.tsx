@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -99,12 +100,10 @@ export default function Navbar() {
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className={`nav-hamburger ${open ? "is-active" : ""}`}
+            className="nav-hamburger"
             aria-label="Toggle menu"
           >
-            <div className="hamburger-box">
-              <div className="hamburger-inner"></div>
-            </div>
+            {open ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
