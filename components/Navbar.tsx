@@ -27,16 +27,28 @@ export default function Navbar() {
 
   return (
     <header
-      className={`site-header ${scrolled && !open ? 'glass-panel' : ''}`}
+      className="site-header"
       style={{
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: scrolled && !open ? undefined : "transparent",
-        borderBottom: scrolled && !open ? undefined : "1px solid transparent",
-        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
+      {/* Background layer for the header to avoid nested backdrop-filter bugs */}
+      <div 
+        className={scrolled ? 'glass-panel' : ''}
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: open ? 0 : 1,
+          background: scrolled ? undefined : "transparent",
+          borderBottom: scrolled ? undefined : "1px solid transparent",
+          transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+          zIndex: 1,
+          pointerEvents: "none"
+        }}
+      />
+      
       <div className="nav-inner" style={{ position: "relative", zIndex: 100 }}>
         {/* ── Logo: image + full name + motto ── */}
         <Link href="/" className="nav-logo">
