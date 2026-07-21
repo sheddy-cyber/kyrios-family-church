@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`site-header ${scrolled ? 'glass-panel' : ''}`}
+      className={`site-header ${scrolled && !open ? 'glass-panel' : ''}`}
       style={{
         position: "sticky",
         top: 0,
