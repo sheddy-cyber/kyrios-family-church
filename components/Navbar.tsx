@@ -65,7 +65,7 @@ export default function Navbar() {
               <span
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontWeight: 700,
+                  fontWeight: 900,
                   letterSpacing: "0.06em",
                 }}
               >
