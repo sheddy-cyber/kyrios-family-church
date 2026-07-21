@@ -229,7 +229,7 @@ textarea:focus {
   border: none;
   cursor: pointer;
   padding: 8px;
-  margin-right: 4px;
+  margin-right: -4px;
   color: #141210;
   display: flex;
   align-items: center;
@@ -472,8 +472,8 @@ textarea:focus {
 }
 
 .nav-give-mobile {
-  padding: 3px 8px;
-  font-size: 10px;
+  padding: 6px 12px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   min-width: auto;
   width: auto;
