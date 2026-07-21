@@ -61,7 +61,15 @@ export default function Navbar() {
             priority
           />
           <div className="nav-logo-text">
-            <span className="nav-logo-name">
+            <span 
+              className="nav-logo-name"
+              style={{
+                background: "linear-gradient(135deg, #141210 20%, #8b1a1a 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block"
+              }}
+            >
               <span
                 style={{
                   fontFamily: "var(--font-display)",
@@ -74,7 +82,7 @@ export default function Navbar() {
               <span
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontWeight: 600,
+                  fontWeight: 300,
                   letterSpacing: "0.02em",
                   fontStyle: "italic",
                 }}
