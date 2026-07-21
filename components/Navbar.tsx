@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -100,46 +99,45 @@ export default function Navbar() {
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className="nav-hamburger"
+            className={`nav-hamburger ${open ? "is-active" : ""}`}
             aria-label="Toggle menu"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            <div className="hamburger-box">
+              <div className="hamburger-inner"></div>
+            </div>
           </button>
         </div>
       </div>
 
       {/* ── Mobile drawer ── */}
-      {open && (
-        <div className="nav-drawer">
-          <nav className="nav-drawer-inner">
-            {links.map((l) => {
-              const isActive = pathname === l.href;
-              return (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className={`nav-drawer-link${isActive ? " active" : ""}`}
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </Link>
-              );
-            })}
-            <Link
-              href="/give"
-              className="btn-crimson"
-              style={{
-                marginTop: "8px",
-                alignSelf: "flex-start",
-                padding: "12px 32px",
-              }}
-              onClick={() => setOpen(false)}
-            >
-              Give Now
-            </Link>
-          </nav>
-        </div>
-      )}
+      <div className={`nav-drawer-overlay ${open ? "open" : ""}`}>
+        <nav className="nav-drawer-inner">
+          {links.map((l, index) => {
+            const isActive = pathname === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`nav-drawer-link${isActive ? " active" : ""}`}
+                style={{ transitionDelay: open ? `${index * 50}ms` : '0ms' }}
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+          <Link
+            href="/give"
+            className="btn-crimson nav-drawer-btn"
+            style={{
+              transitionDelay: open ? `${links.length * 50}ms` : '0ms',
+            }}
+            onClick={() => setOpen(false)}
+          >
+            Give Now
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

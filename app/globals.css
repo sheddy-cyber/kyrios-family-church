@@ -233,6 +233,61 @@ textarea:focus {
   color: #141210;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  z-index: 100;
+}
+
+.hamburger-box {
+  width: 20px;
+  height: 14px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -1px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 20px;
+  height: 2px;
+  background-color: var(--ink);
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -6px;
+}
+
+.hamburger-inner::after {
+  bottom: -6px;
+}
+
+/* Hamburger Active State */
+.nav-hamburger.is-active .hamburger-inner {
+  transform: translate3d(0, 0, 0) rotate(45deg);
+}
+
+.nav-hamburger.is-active .hamburger-inner::before {
+  transform: rotate(-45deg) translate3d(-4.5px, -4.5px, 0);
+  opacity: 0;
+}
+
+.nav-hamburger.is-active .hamburger-inner::after {
+  transform: translate3d(0, -12px, 0) rotate(-90deg);
 }
 
 /* Card expiry + CVV row — always 50/50, no overflow */
@@ -256,34 +311,66 @@ textarea:focus {
   }
 }
 
-/* Mobile drawer */
-.nav-drawer {
-  background: #fff;
-  border-top: 1px solid var(--border);
+/* Mobile drawer overlay */
+.nav-drawer-overlay {
+  position: fixed;
+  top: 76px; /* below navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 76px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+  z-index: 90;
+  overflow-y: auto;
 }
+
+.nav-drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
 .nav-drawer-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 20px 32px;
+  padding: 40px 20px 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
+
 @media (min-width: 640px) {
   .nav-drawer-inner {
-    padding: 24px 32px 32px;
+    padding: 40px 32px 40px;
   }
 }
+
+.nav-drawer-link, .nav-drawer-btn {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
+}
+
+.nav-drawer-overlay.open .nav-drawer-link,
+.nav-drawer-overlay.open .nav-drawer-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .nav-drawer-link {
-  font-size: 16px;
-  letter-spacing: 0.06em;
+  font-size: 18px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 500;
   color: var(--ink);
   text-decoration: none;
   font-family: var(--font-body);
-  transition: color 0.2s;
 }
+
 .nav-drawer-link:hover {
   color: var(--crimson);
 }
