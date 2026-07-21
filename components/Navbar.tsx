@@ -31,12 +31,12 @@ export default function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: scrolled ? undefined : "transparent",
-        borderBottom: scrolled ? undefined : "1px solid transparent",
+        background: scrolled && !open ? undefined : "transparent",
+        borderBottom: scrolled && !open ? undefined : "1px solid transparent",
         transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
-      <div className="nav-inner">
+      <div className="nav-inner" style={{ position: "relative", zIndex: 100 }}>
         {/* ── Logo: image + full name + motto ── */}
         <Link href="/" className="nav-logo">
           <Image
