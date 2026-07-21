@@ -492,13 +492,26 @@ textarea:focus {
 }
 @media (max-width: 640px) {
   .sermons-filter-bar {
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 12px;
   }
   .sermons-search-box {
-    flex: 1 1 220px;
+    flex: 1 1 100%;
+  }
+  .sermons-filter-controls {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   .sermons-select {
-    min-width: 110px;
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+  .sermons-count {
+    width: 100%;
+    margin-top: 4px;
+    font-size: 11px;
   }
 }
 
