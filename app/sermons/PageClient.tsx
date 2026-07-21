@@ -318,16 +318,6 @@ export default function SermonsPageClient() {
                   }}
                 />
               </div>
-              <span
-                className="sermons-count"
-                style={{
-                  fontSize: "12px",
-                  color: C.stone,
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                {filtered.length} messages
-              </span>
             </div>
           </div>
         </div>
