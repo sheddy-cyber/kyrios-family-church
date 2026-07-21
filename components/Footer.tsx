@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <Image
-                src="/kyrios-logo.jpg"
+                src="/kyrios-logo.png"
                 alt="Kyrios Family Church"
                 width={52}
                 height={52}
@@ -76,10 +76,10 @@ export default function Footer() {
                 <span style={{ color: '#433e38' }}>Sunday Service: </span>9:00 AM
               </li>
               <li style={{ paddingTop: '8px' }}>
-                <a href="tel:+2348060046003" className="footer-link">0806 004 6003</a>
+                <a href="tel:+2348060046003" className="footer-link" style={{ transition: 'opacity 0.2s ease', opacity: 0.7 }}>0806 004 6003</a>
               </li>
               <li>
-                <a href="mailto:hello@kyriosfamily.org" className="footer-link">hello@kyriosfamily.org</a>
+                <a href="mailto:hello@kyriosfamily.org" className="footer-link" style={{ transition: 'opacity 0.2s ease', opacity: 0.7 }}>hello@kyriosfamily.org</a>
               </li>
             </ul>
           </div>

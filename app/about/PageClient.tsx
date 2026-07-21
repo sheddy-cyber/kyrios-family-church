@@ -9,8 +9,8 @@ const C = { crimson: '#8b1a1a', crimsonLight: '#e05555', ink: '#141210', inkSoft
 const team = [
   { name: 'Rev. Isaac Daniel',    role: 'Founder & Senior Pastor',   bio: 'Rev. Isaac founded Kyrios Family Church in 2019 with a burning passion to raise a people who walk in the fullness of life that Christ offers. He leads with humility, vision, and deep love for the Word.', initials: 'ID' },
   { name: 'Pastor Bisola Daniel', role: 'Pastor & Head of Choir',     bio: 'Pastor Bisola serves as co-pastor and leads the worship team, creating an atmosphere of genuine encounter with God each week. Her warmth and care are the heartbeat of the congregation.', initials: 'BD' },
-  { name: 'Bro. Shedrach Idike',  role: 'Asst. Music Head',           bio: 'Shedrach supports the music ministry with creativity and dedication, helping to develop the sound and culture of worship at Kyrios Family Church.', initials: 'SI' },
-  { name: 'Sis. Jane Idike',      role: "Head, Children's Dept.",     bio: "Jane leads the children's department with a heart for the next generation, building a safe, nurturing environment where young ones discover their identity in Christ.", initials: 'JI' },
+  { name: 'Bro. Shedrach',  role: 'Asst. Music Head',           bio: 'Shedrach supports the music ministry with creativity and dedication, helping to develop the sound and culture of worship at Kyrios Family Church.', initials: 'BS' },
+  { name: 'Sis. Jane',      role: "Head, Children's Dept.",     bio: "Jane leads the children's department with a heart for the next generation, building a safe, nurturing environment where young ones discover their identity in Christ.", initials: 'SJ' },
   { name: 'Bro. Favour',            role: 'Videography',                bio: 'Bro. Favour faithfully records every service, ensuring that messages reach beyond the four walls of the church to those who could not be present in person.', initials: 'BF' },
 ]
 
