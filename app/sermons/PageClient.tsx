@@ -114,17 +114,29 @@ const speakerList = [
   "Rev. Isaac Daniel",
 ];
 
-export default function SermonsPageClient() {
+export default function SermonsPageClient({ initialSermons = [] }: { initialSermons?: any[] }) {
   const [search, setSearch] = useState("");
   const [selSeries, setSelSeries] = useState("All Series");
   const [selSpeaker, setSelSpeaker] = useState("All Speakers");
-  const [playing, setPlaying] = useState<number | null>(null);
+  const [playing, setPlaying] = useState<string | number | null>(null);
 
-  const filtered = allSermons.filter((s) => {
+  // Use RSS data if available, otherwise fallback to mock data
+  const activeSermons = initialSermons.length > 0 ? initialSermons.map((s, i) => ({
+    ...s,
+    // Cycle through mock backgrounds for aesthetic consistency
+    bg: allSermons[i % allSermons.length].bg
+  })) : allSermons;
+
+  // Dynamically generate filter options
+  const dynamicSeriesList = ["All Series", ...Array.from(new Set(activeSermons.map(s => s.series))).filter(Boolean)] as string[];
+  const dynamicSpeakerList = ["All Speakers", ...Array.from(new Set(activeSermons.map(s => s.speaker))).filter(Boolean)] as string[];
+
+  const filtered = activeSermons.filter((s) => {
     const q = search.toLowerCase();
     return (
       (s.title.toLowerCase().includes(q) ||
-        s.scripture.toLowerCase().includes(q)) &&
+        (s.scripture && s.scripture.toLowerCase().includes(q)) ||
+        (s.description && s.description.toLowerCase().includes(q))) &&
       (selSeries === "All Series" || s.series === selSeries) &&
       (selSpeaker === "All Speakers" || s.speaker === selSpeaker)
     );
@@ -267,7 +279,7 @@ export default function SermonsPageClient() {
                     paddingRight: "16px",
                   }}
                 >
-                  {seriesList.map((s) => (
+                  {dynamicSeriesList.map((s) => (
                     <option key={s}>{s}</option>
                   ))}
                 </select>
@@ -305,7 +317,7 @@ export default function SermonsPageClient() {
                     paddingRight: "16px",
                   }}
                 >
-                  {speakerList.map((s) => (
+                  {dynamicSpeakerList.map((s) => (
                     <option key={s}>{s}</option>
                   ))}
                 </select>
@@ -369,7 +381,7 @@ export default function SermonsPageClient() {
                   fontFamily: "var(--font-body)",
                 }}
               >
-                {allSermons.find((s) => s.id === playing)?.title}
+            {activeSermons.find((s) => s.id === playing)?.title}
               </p>
               <p
                 style={{
@@ -378,32 +390,28 @@ export default function SermonsPageClient() {
                   fontFamily: "var(--font-body)",
                 }}
               >
-                {allSermons.find((s) => s.id === playing)?.speaker}
+                {activeSermons.find((s) => s.id === playing)?.speaker}
               </p>
             </div>
             <div
               style={{
                 flex: 2,
-                minWidth: "80px",
-                height: "2px",
-                background: C.border,
-                position: "relative" as const,
+                minWidth: "150px",
+                display: "flex",
+                alignItems: "center"
               }}
             >
-              <div
-                style={{ width: "35%", height: "100%", background: C.crimson }}
-              />
+              {activeSermons.find((s) => s.id === playing)?.audioUrl ? (
+                <audio 
+                  controls 
+                  autoPlay
+                  src={activeSermons.find((s) => s.id === playing)?.audioUrl} 
+                  style={{ width: "100%", height: "36px", outline: "none" }}
+                />
+              ) : (
+                <span style={{ fontSize: "12px", color: C.inkMuted }}>No audio available</span>
+              )}
             </div>
-            <span
-              style={{
-                fontSize: "12px",
-                color: C.inkMuted,
-                fontFamily: "monospace",
-                flexShrink: 0,
-              }}
-            >
-              {allSermons.find((s) => s.id === playing)?.duration}
-            </span>
             <button
               onClick={() => setPlaying(null)}
               style={{
